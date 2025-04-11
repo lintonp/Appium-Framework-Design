@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-04-03T08:38:44 IST" name="Default suite" finished-at="2025-04-03T08:39:17 IST" duration-ms="32785">
+    <groups>
+    </groups>
+    <test started-at="2025-04-03T08:38:44 IST" name="Default test" finished-at="2025-04-03T08:39:17 IST" duration-ms="32785">
+      <class name="GeneralStore.AppiumFrameworkDesign.PurchaseProducts">
+        <test-method is-config="true" signature="configureAppium()[pri:0, instance:GeneralStore.AppiumFrameworkDesign.PurchaseProducts@5b7a5baa]" started-at="2025-04-03T08:38:44 IST" name="configureAppium" finished-at="2025-04-03T08:38:58 IST" duration-ms="13244" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configureAppium -->
+        <test-method signature="purchaseProduct()[pri:0, instance:GeneralStore.AppiumFrameworkDesign.PurchaseProducts@5b7a5baa]" started-at="2025-04-03T08:38:58 IST" name="purchaseProduct" finished-at="2025-04-03T08:39:17 IST" duration-ms="19156" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- purchaseProduct -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:GeneralStore.AppiumFrameworkDesign.PurchaseProducts@5b7a5baa]" started-at="2025-04-03T08:39:17 IST" name="tearDown" finished-at="2025-04-03T08:39:17 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- GeneralStore.AppiumFrameworkDesign.PurchaseProducts -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

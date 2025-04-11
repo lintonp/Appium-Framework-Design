@@ -1,8 +1,12 @@
 package GeneralStore.AppiumFrameworkDesign.utilities;
 
+import java.time.Duration;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -66,6 +70,15 @@ public class AppGestures {
 			e.printStackTrace();
 		}
 		return attributeValue;
+	}
+	
+	public void waitForElementVisible(WebElement we, int time) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.visibilityOf(we));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
