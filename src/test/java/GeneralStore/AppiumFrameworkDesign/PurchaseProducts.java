@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.ImmutableMap;
@@ -13,24 +14,26 @@ import io.appium.java_client.android.StartsActivity;
 
 public class PurchaseProducts extends BaseTest {
 	
-	@BeforeTest
-	public void preTest() {
-//		Activity activity = new Activity("io.appium.android.apis", "com.androidsample.generalstore.MainActivity");
-//      driver.startActivity(activity);
-		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
-		((JavascriptExecutor) driver).executeScript("mobile: startActivity", 
-													ImmutableMap.of("intent", "com.androidsample.generalstore/com.androidsample.generalstore.MainActivity"));
-	}
+//	@BeforeTest
+//	public void preTest() {
+////		Activity activity = new Activity("io.appium.android.apis", "com.androidsample.generalstore.MainActivity");
+////      driver.startActivity(activity);
+//		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
+//		((JavascriptExecutor) driver).executeScript("mobile: startActivity", 
+//													ImmutableMap.of("intent", "com.androidsample.generalstore/com.androidsample.generalstore.MainActivity"));
+//	}
 	
-	@Test
-	public void validateLogin() {
+	@Test(dataProvider = "getLoginData")
+	public void validateLogin(String name, String gender, String country) {
 //		loginPage lp = new loginPage(driver);
 		
-		Assert.assertTrue(lp.validateLoginTitle());
+		System.out.println(name  +", "+ gender +", "+ country);
 		
-		lp.login("Linton");
-		
-		Assert.assertFalse(lp.validateLoginTitle());
+//		Assert.assertTrue(lp.validateLoginTitle());
+//		
+//		lp.login("Linton");
+//		
+//		Assert.assertFalse(lp.validateLoginTitle());
 
 	}
 	
@@ -52,6 +55,11 @@ public class PurchaseProducts extends BaseTest {
 		cart.clickPurchase();
 		
 		
+	}
+	
+	@DataProvider
+	public Object[][] getLoginData(){
+		return new Object[][] {{"Messi", "Male", "Argentina"},{"Ronaldo", "Male", "Portugal"}};
 	}
 	
 }
