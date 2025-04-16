@@ -24,7 +24,6 @@ public class BaseTest {
 //				.withIPAddress("127.0.0.1").usingPort(4273).build();
 //		service.start();
 				
-		/*
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName("LintonPixel4");
 		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\General-Store.apk");
@@ -33,7 +32,6 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		lp = new loginPage(driver);
-		*/
 	}
 	
 	@AfterClass

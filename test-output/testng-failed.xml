@@ -5,9 +5,9 @@
     <classes>
       <class name="GeneralStore.AppiumFrameworkDesign.PurchaseProducts">
         <methods>
+          <include name="purchaseProduct"/>
           <include name="configureAppium"/>
           <include name="tearDown"/>
-          <include name="login"/>
         </methods>
       </class> <!-- GeneralStore.AppiumFrameworkDesign.PurchaseProducts -->
     </classes>
