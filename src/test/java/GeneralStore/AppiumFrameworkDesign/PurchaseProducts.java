@@ -29,7 +29,6 @@ public class PurchaseProducts extends BaseTest {
 	
 	@Test(dataProvider = "getLoginData")
 	public void validateLogin(HashMap<String, String> data) {
-//		loginPage lp = new loginPage(driver);
 		
 		System.out.println("Name: " + data.get("name"));
         System.out.println("Gender: " + data.get("gender"));
@@ -52,7 +51,6 @@ public class PurchaseProducts extends BaseTest {
 	
 	@Test
 	public void purchaseProduct() {
-//		loginPage lp = new loginPage(driver);
 		Products productsPage = lp.login("Linton");
 
 		productsPage.addProductToCart("Jordan 6 Rings");
