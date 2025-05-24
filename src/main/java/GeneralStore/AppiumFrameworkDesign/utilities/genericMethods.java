@@ -17,4 +17,5 @@ public class genericMethods {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(new File(filePath), new TypeReference<List<HashMap<String, String>>>() {});
     }
+	
 }

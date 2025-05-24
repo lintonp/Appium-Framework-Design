@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="GeneralStore.AppiumFrameworkDesign.PurchaseProducts">
+      <class name="GeneralStore.AppiumFrameworkDesign.ErrorValidations">
         <methods>
-          <include name="purchaseProduct"/>
           <include name="configureAppium"/>
           <include name="tearDown"/>
+          <include name="errorLoginValidation"/>
         </methods>
-      </class> <!-- GeneralStore.AppiumFrameworkDesign.PurchaseProducts -->
+      </class> <!-- GeneralStore.AppiumFrameworkDesign.ErrorValidations -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -9,9 +9,12 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -26,7 +29,8 @@ public class BaseTest {
 	public void configureAppium() throws FileNotFoundException, IOException {
 		
 		Properties props = new Properties();
-		props.load(new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\GeneralStore\\AppiumFrameworkDesign\\resources\\globalData.properties"));
+		props.load(new FileInputStream(System.getProperty("user.dir") + 
+				"\\src\\main\\java\\GeneralStore\\AppiumFrameworkDesign\\resources\\globalData.properties"));
 		
 		String ipAddress = props.getProperty("ipAddress"),
 				androidDeviceName = props.getProperty("androidDeviceName");
@@ -38,19 +42,30 @@ public class BaseTest {
 		service.start();
 				
 		UiAutomator2Options options = new UiAutomator2Options();
+		options.setPlatformName("Android");
 		options.setDeviceName(androidDeviceName);
 		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\General-Store.apk");
 		
+		System.out.println("http://"+ipAddress+":"+portNumber+"/");
 		driver = new AndroidDriver(new URL("http://"+ipAddress+":"+portNumber+"/"), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitDuration));
 		
 		lp = new loginPage(driver);
+		System.out.println(lp);
 	}
 	
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
-		service.stop();
+		if (driver != null) driver.quit();
+		if (service != null) service.stop();
+	}
+	
+	public String captureScreenshot(String TCname, AppiumDriver driver) throws IOException {
+		String destination = "";
+		File source = driver.getScreenshotAs(OutputType.FILE);
+		destination = System.getProperty("user.dir") + "\\reports\\Screenshots\\" + TCname +".png";
+		FileUtils.copyFile(source, new File(destination));
+		return destination;
 	}
 	
 }

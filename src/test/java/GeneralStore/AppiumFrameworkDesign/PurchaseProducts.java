@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,16 +16,33 @@ import com.google.common.collect.ImmutableMap;
 
 import GeneralStore.AppiumFrameworkDesign.utilities.genericMethods;
 import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.AndroidDriver;
+
+
 
 public class PurchaseProducts extends BaseTest {
 	
-	@BeforeTest
+	@BeforeMethod
 	public void preTest() {
 //		Activity activity = new Activity("io.appium.android.apis", "com.androidsample.generalstore.MainActivity");
 //      driver.startActivity(activity);
-		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
-		((JavascriptExecutor) driver).executeScript("mobile: startActivity", 
-													ImmutableMap.of("intent", "com.androidsample.generalstore/com.androidsample.generalstore.MainActivity"));
+//		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
+//		((JavascriptExecutor) driver).executeScript("mobile: startActivity", 
+//													ImmutableMap.of("intent", "com.androidsample.generalstore/com.androidsample.generalstore.MainActivity"));
+		System.out.println("Before Method - preTest app navigation");
+//		((JavascriptExecutor) driver).executeScript("mobile: startActivity", 
+//			    ImmutableMap.of(
+//			        "appPackage", "com.androidsample.generalstore",
+//			        "appActivity", "com.androidsample.generalstore.MainActivity"
+//			    )
+//			);
+		
+//		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
+//		((AndroidDriver) driver).startActivity(activity);
+		System.out.println("End of @BeforeMethod - preTest");
+
 	}
 	
 	@Test(dataProvider = "getLoginData")
@@ -37,17 +55,18 @@ public class PurchaseProducts extends BaseTest {
 		
 		Assert.assertTrue(lp.validateLoginTitle());
 		
-		lp.login("Linton");
+//		lp.login(data.get("name"));
+		lp.login(data.get("country"), data.get("name"), data.get("gender"));
 		
 		Assert.assertFalse(lp.validateLoginTitle());
 
 	}
 	
-	@Test
-	public void errorLoginValidation() {
-		lp.clickLoginButton();
-		Assert.assertTrue(lp.validateLoginTitle());
-	}
+//	@Test
+//	public void errorLoginValidation() {
+//		lp.clickLoginButton();
+//		Assert.assertTrue(lp.validateLoginTitle());
+//	}
 	
 	@Test
 	public void purchaseProduct() {
@@ -68,7 +87,7 @@ public class PurchaseProducts extends BaseTest {
 		List<HashMap<String, String>> dataList = new ArrayList<HashMap<String,String>>();
 		try {
 			dataList = genericMethods.getJsonData( System.getProperty("user.dir") 
-					+ "\\src\\test\\java\\resources\\TCdata\\loginData.json");
+					+ "\\src\\test\\java\\resources\\loginData.json");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
